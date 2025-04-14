@@ -1,0 +1,12 @@
+<mat-card>
+    <mat-card-title>Post an Answer</mat-card-title>
+    <mat-card-content>
+      <mat-form-field class="full-width">
+        <mat-label>Your Answer</mat-label>
+        <textarea matInput [(ngModel)]="newAnswer" rows="4"></textarea>
+      </mat-form-field>
+    </mat-card-content>
+    <mat-card-actions>
+      <button mat-raised-button color="primary" (click)="postAnswer()">Post</button>
+    </mat-card-actions>
+  </mat-card>

@@ -1,0 +1,28 @@
+<mat-card class="question-card">
+    <mat-card-title>{{ question.title }}</mat-card-title>
+    <mat-card-content>
+      <p>{{ question.description }}</p>
+      <div class="tags" *ngIf="question.tags?.length">
+        <span class="tag" *ngFor="let tag of question.tags">{{ tag }}</span>
+      </div>
+    </mat-card-content>
+  </mat-card>
+  
+  <h3>Answers</h3>
+  <app-answer
+  *ngFor="let answer of answers"
+  [answer]="answer"
+  (like)="likeAnswer(answer)">
+</app-answer>
+
+  
+  <h3>Post an Answer</h3>
+  <mat-card>
+    <mat-card-content>
+      <textarea [(ngModel)]="newAnswer" rows="3" placeholder="Your answer..."></textarea>
+    </mat-card-content>
+    <mat-card-actions>
+      <button mat-raised-button color="primary" (click)="postAnswer()">Post</button>
+    </mat-card-actions>
+  </mat-card>
+  

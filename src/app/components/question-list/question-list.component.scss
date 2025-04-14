@@ -1,0 +1,40 @@
+.filter-bar {
+    display: flex;
+    gap: 15px;
+    margin-bottom: 20px;
+  }
+  
+  .search-field, .sort-field {
+    flex: 1;
+  }
+  
+  .question-card {
+    margin-bottom: 20px;
+  }
+  
+  .tags {
+    margin-top: 10px;
+  }
+  .tag-list {
+    display: flex;
+    gap: 8px;
+    margin-top: 10px;
+    flex-wrap: wrap;
+  }
+  
+  .tag {
+    display: inline-block;
+  background-color: #e0f2f1;
+  color: #00695c;
+  padding: 4px 10px;
+  border-radius: 20px;
+  font-size: 13px;
+  margin-right: 5px;
+  }
+  
+  mat-card {
+    margin-bottom: 20px;
+    padding: 16px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 12px;
+  }
