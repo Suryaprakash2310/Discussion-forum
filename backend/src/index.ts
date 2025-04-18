@@ -3,7 +3,7 @@
 import express from 'express';
 import cors from 'cors';
 import questionRoutes from './routes/questionRoutes';
-
+import answerRoutes from './routes/answer';
 const app = express();
 const PORT = 3000;
 
@@ -15,6 +15,7 @@ app.get('/', (req, res) => {
 });
 
 app.use('/questions', questionRoutes); 
+app.use('/answers', answerRoutes);
 
 app.listen(PORT, () => {
   console.log(`Server is running at http://localhost:${PORT}`);

@@ -1,28 +1,30 @@
-<mat-card class="question-card">
-    <mat-card-title>{{ question.title }}</mat-card-title>
-    <mat-card-content>
-      <p>{{ question.description }}</p>
-      <div class="tags" *ngIf="question.tags?.length">
-        <span class="tag" *ngFor="let tag of question.tags">{{ tag }}</span>
-      </div>
-    </mat-card-content>
-  </mat-card>
-  
-  <h3>Answers</h3>
-  <app-answer
-  *ngFor="let answer of answers"
-  [answer]="answer"
-  (like)="likeAnswer(answer)">
-</app-answer>
+<div class="container">
+  <h2>{{ questionText }}</h2>
 
+  <div *ngFor="let answer of answers" class="answer-card mat-elevation-z2">
+    <p>{{ answer.answer_text }}</p>
+    <small>Posted on: {{ answer.created_at | date:'short' }}</small>
+  </div>
+
+  <h3>Submit Your Answer</h3>
+
+  <textarea
+    [(ngModel)]="answerText"
+    rows="4"
+    cols="50"
+    placeholder="Write your answer here..."
+  ></textarea>
+
+  <br />
   
-  <h3>Post an Answer</h3>
-  <mat-card>
-    <mat-card-content>
-      <textarea [(ngModel)]="newAnswer" rows="3" placeholder="Your answer..."></textarea>
-    </mat-card-content>
-    <mat-card-actions>
-      <button mat-raised-button color="primary" (click)="postAnswer()">Post</button>
-    </mat-card-actions>
-  </mat-card>
-  
+
+  <button (click)="submitAnswer()">Post Answer</button>
+
+  <p *ngIf="showSuccessMessage" style="color: green;">
+    ✅ Answer submitted successfully!
+  </p>
+  <app-answer
+  [questionId]="questionId"
+  (answerSubmitted)="onAnswerSubmitted()">
+</app-answer>
+</div>

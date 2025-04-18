@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { MatCardModule } from '@angular/material/card';
@@ -6,8 +6,9 @@ import { FormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { MatButtonModule } from '@angular/material/button';
 import { AnswerComponent } from '../answer-form/answer-form.component';
- // adjust path as needed
-
+import { AnswerService } from '../../services/answer.service';
+import { QuestionService, Question } from '../../services/question.service';
+import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-question-details',
@@ -24,38 +25,69 @@ import { AnswerComponent } from '../answer-form/answer-form.component';
   styleUrls: ['./question-details.component.scss']
 })
 export class QuestionDetailsComponent implements OnInit {
-  questionId: number = 0;
-  question: any;
+  questionId!: number;
+  question: any = '';
+  questionText : string='';
+  answerText: string = '';
+  showSuccessMessage: boolean = false;
   answers: any[] = [];
-  newAnswer: string = '';
 
-  constructor(private route: ActivatedRoute) {}
+  constructor(
+    private route: ActivatedRoute,
+    private questionService: QuestionService,
+    
+    private answerService: AnswerService
+  
+    
+  ) {}
 
   ngOnInit(): void {
     this.questionId = Number(this.route.snapshot.paramMap.get('id'));
-
-    // Simulated question and answers
-    this.question = {
-      id: this.questionId,
-      title: 'What is Dependency Injection?',
-      description: 'Can someone explain DI in simple terms?',
-      tags: ['angular', 'di']
-    };
-
-    this.answers = [
-      { id: 1, answer_text: 'DI is providing dependencies to components.', likes: 10 },
-      { id: 2, answer_text: 'It makes code more testable and decoupled.', likes: 7 }
-    ];
+    this.fetchQuestion();
+    this.fetchAnswers();
   }
 
-  postAnswer() {
-    if (this.newAnswer.trim()) {
-      this.answers.push({ id: Date.now(), answer_text: this.newAnswer, likes: 0 });
-      this.newAnswer = '';
-    }
+  fetchQuestion() {
+    this.questionService.getQuestionById(this.questionId).subscribe((data) => {
+      this.question = data;
+    });
+  
   }
 
-  likeAnswer(answer: any) {
-    answer.likes += 1;
+  fetchAnswers() {
+    if (!this.questionId) return;
+  
+    this.answerService.getAnswersByQuestionId(this.questionId).subscribe({
+      next: (data) => {
+        this.answers = data;
+      },
+      error: (err) => {
+        console.error('Failed to fetch answers:', err);
+      }
+    });
+  }
+
+
+  onAnswerSubmitted() {
+    this.fetchAnswers();
+    alert('Answer submitted successfully!');
+    // Optional: refresh answers list if implemented
+  }
+
+  submitAnswer(): void {
+    if (!this.answerText.trim()) return;
+
+    this.answerService.submitAnswer(this.questionId, this.answerText).subscribe({
+      next: () => {
+        this.showSuccessMessage = true;
+        this.answerText = '';
+        setTimeout(() => {
+          this.showSuccessMessage = false;
+        }, 3000);
+      },
+      error: (err) => {
+        console.error('Error submitting answer:', err);
+      }
+    });
   }
 }

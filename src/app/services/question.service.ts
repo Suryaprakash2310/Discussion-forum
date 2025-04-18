@@ -17,6 +17,10 @@ export class QuestionService {
 
   constructor(private http: HttpClient) {}
 
+  getQuestionById(id: number): Observable<Question> {
+    return this.http.get<Question>(`${this.baseUrl}/${id}`);
+  }
+
   getAllQuestions(): Observable<Question[]> {
     return this.http.get<Question[]>(this.baseUrl);
   }

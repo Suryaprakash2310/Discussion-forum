@@ -1,28 +1,37 @@
 import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { MatCardModule } from '@angular/material/card';
+import { FormsModule } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
-import { LikeButtonComponent } from '../like-button/like-button.component';
+import { AnswerService } from '../../services/answer.service';
 
 @Component({
   selector: 'app-answer',
   standalone: true,
-  imports: [CommonModule, MatCardModule, MatButtonModule, LikeButtonComponent],
+  imports: [CommonModule, FormsModule, MatButtonModule],
   template: `
-    <mat-card class="answer-card">
-      <mat-card-content>{{ answer.answer_text }}</mat-card-content>
-      <mat-card-actions>
-        <app-like-button [likes]="answer.likes" (like)="onLike()"></app-like-button>
-      </mat-card-actions>
-    </mat-card>
-  `,
-  styles: [`.answer-card { margin-bottom: 15px; }`]
+    <h4>Submit an Answer</h4>
+    <textarea [(ngModel)]="answerText" rows="4" cols="50" placeholder="Your answer here..."></textarea>
+    <br />
+    <button mat-raised-button color="primary" (click)="submit()">Submit</button>
+  `
 })
 export class AnswerComponent {
-  @Input() answer: any;
-  @Output() like = new EventEmitter<void>();
+  @Input() questionId!: number;
+  @Output() answerSubmitted = new EventEmitter<void>();
 
-  onLike() {
-    this.like.emit();
+  answerText: string = '';
+
+  constructor(private answerService: AnswerService) {}
+
+  submit() {
+    if (!this.answerText.trim()) return;
+
+    this.answerService.submitAnswer(this.questionId, this.answerText).subscribe({
+      next: () => {
+        this.answerText = '';
+        this.answerSubmitted.emit(); // notify parent to refresh answers
+      },
+      error: (err) => console.error('Error submitting answer:', err)
+    });
   }
 }
