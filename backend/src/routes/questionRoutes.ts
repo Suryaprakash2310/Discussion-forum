@@ -1,7 +1,7 @@
 // src/routes/questionRoutes.ts
 
 import { Router, Request, Response } from 'express';
-import { pool } from '../db';
+import { pool } from '../db/db';
 
 const router = Router();
 
