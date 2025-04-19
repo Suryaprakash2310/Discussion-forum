@@ -38,6 +38,23 @@ router.post('/', async  (req: Request, res: Response): Promise<any> =>{
           res.status(500).json({ error: 'Failed to fetch answers' });
         }
       });
+
+      // PUT /api/answers/:id/like
+router.put('/:id/like', async (req: Request, res: Response) => {
+  const { id } = req.params;
+
+  try {
+    const [] = await pool.execute(
+      'UPDATE answers SET likes = likes + 1 WHERE id = ?',
+      [id]
+    );
+    res.status(200).json({ message: 'Like updated' });
+  } catch (err) {
+    console.error('Error updating like:', err);
+    res.status(500).json({ error: 'Failed to update like' });
+  }
+});
+
       
 
 export default router;

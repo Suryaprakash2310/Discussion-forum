@@ -2,6 +2,7 @@
 
 import { Router, Request, Response } from 'express';
 import { pool } from '../db/db';
+import { promises } from 'dns';
 
 const router = Router();
 
@@ -37,5 +38,26 @@ router.post('/', async (req: Request, res: Response) => {
     res.status(500).json({ error: 'Something went wrong' });
   }
 });
+
+// i fetch single question to show it iin the question-detail.component.ts
+router.get('/:id', async (req: Request, res: Response) : Promise<any> => {
+  try {
+    const [rows] = await pool.query('SELECT * FROM questions WHERE id = ? LIMIT 1', [req.params.id]) as [any[], any];
+
+    if (rows.length === 0) {
+      return res.status(404).json({ message: 'Question not found' });
+    }
+
+    const question = rows[0]; // Safely access the first element of rows
+    res.json(question);
+  } catch (error) {
+    console.error('Error fetching question:', error);
+    res.status(500).json({ message: 'Failed to fetch question' });
+  }
+});
+
+
+
+
 
 export default router;

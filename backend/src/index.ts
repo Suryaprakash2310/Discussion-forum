@@ -15,7 +15,7 @@ app.get('/', (req, res) => {
 });
 
 app.use('/questions', questionRoutes); 
-app.use('/answers', answerRoutes);
+app.use('/api/answers', answerRoutes);
 
 app.listen(PORT, () => {
   console.log(`Server is running at http://localhost:${PORT}`);

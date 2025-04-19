@@ -19,7 +19,13 @@ export class AnswerService {
   }
 
   getAnswersByQuestionId(questionId: number) {
-    return this.http.get<any[]>(`http://localhost:3000/answers/${questionId}`);
+    return this.http.get<any[]>(`http://localhost:3000/api/answers/${questionId}`);
+  }
+
+  likeAnswer(answerId: number) {
+    return this.http.put<{ likes: number }>(
+      `http://localhost:3000/api/answers/like/${answerId}`, {}
+    );
   }
   
 }

@@ -1,12 +1,10 @@
-<mat-card>
-    <mat-card-title>Post an Answer</mat-card-title>
-    <mat-card-content>
-      <mat-form-field class="full-width">
-        <mat-label>Your Answer</mat-label>
-        <textarea matInput [(ngModel)]="newAnswer" rows="4"></textarea>
-      </mat-form-field>
-    </mat-card-content>
-    <mat-card-actions>
-      <button mat-raised-button color="primary" (click)="postAnswer()">Post</button>
-    </mat-card-actions>
-  </mat-card>
+
+  <h4>Submit an Answer</h4>
+  <textarea [(ngModel)]="answerText" rows="4" placeholder="Write your answer..."></textarea>
+<br />
+<button (click)="submitAnswer()">Submit Answer</button>
+<p *ngIf="message">{{ message }}</p>
+<div class="answer-box">
+  <p>{{ answer.answer_text }}</p>
+ 
+</div>
