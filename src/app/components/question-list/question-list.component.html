@@ -15,8 +15,9 @@
 </div>
 
 <mat-card *ngFor="let question of filteredQuestions" class="question-card">
+  <button mat-button color="warn" (click)="deleteQuestion(question.id)">Delete</button>
   <mat-card-title>{{ question.title }}</mat-card-title>
-  <mat-card-subtitle>{{ question.created_at }} | {{ question.likes }} Likes</mat-card-subtitle>
+  <mat-card-subtitle>{{ question.created_at  }} | {{ question.likes }} Likes</mat-card-subtitle>
   <mat-card-content>
     <p>{{ question.description }}</p>
     <div class="tag-list" *ngIf="question.tags?.length">

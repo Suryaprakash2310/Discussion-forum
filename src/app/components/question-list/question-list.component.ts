@@ -12,7 +12,6 @@ import { MATERIAL_IMPORTS } from '../../material';
 import { Component, OnInit } from '@angular/core';
 import { QuestionService, Question } from '../../services/question.service';
 
-
 @Component({
   selector: 'app-question-list',
   standalone: true,
@@ -52,4 +51,18 @@ export class QuestionListComponent implements OnInit {
       ? filtered.sort((a, b) => new Date(b.created_at).getTime() - new Date(a.created_at).getTime())
       : filtered.sort((a, b) => b.likes - a.likes);
   }
+
+  deleteQuestion(id: number) {
+    if (!confirm('Are you sure you want to delete this question?')) return;
+  
+    this.questionService.deleteQuestion(id).subscribe({
+      next: () => {
+        this.questions = this.questions.filter(q => q.id !== id);
+      },
+      error: (err) => {
+        console.error('Error deleting question:', err);
+      }
+    });
+  }
+  
 }

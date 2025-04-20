@@ -21,7 +21,7 @@ import { LikeButtonComponent } from '../like-button/like-button.component';
     RouterModule,
     MatButtonModule,
     AnswerComponent,
-    LikeButtonComponent
+    LikeButtonComponent,
   ],
   templateUrl: './question-details.component.html',
   styleUrls: ['./question-details.component.scss']

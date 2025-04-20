@@ -12,10 +12,12 @@
   "description": "",
   "dependencies": {
     "cors": "^2.8.5",
+    "date-fns": "^4.1.0",
     "express": "^5.1.0",
     "mysql2": "^3.14.0"
   },
   "devDependencies": {
+    "@types/date-fns": "^2.5.3",
     "@types/express": "^5.0.1",
     "@types/node": "^22.14.0",
     "ts-node-dev": "^2.0.0",

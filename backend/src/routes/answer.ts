@@ -40,20 +40,28 @@ router.post('/', async  (req: Request, res: Response): Promise<any> =>{
       });
 
       // PUT /api/answers/:id/like
-router.put('/:id/like', async (req: Request, res: Response) => {
-  const { id } = req.params;
-
-  try {
-    const [] = await pool.execute(
-      'UPDATE answers SET likes = likes + 1 WHERE id = ?',
-      [id]
-    );
-    res.status(200).json({ message: 'Like updated' });
-  } catch (err) {
-    console.error('Error updating like:', err);
-    res.status(500).json({ error: 'Failed to update like' });
-  }
-});
+      router.put('/:id/like', async (req: Request, res: Response) => {
+        const { id } = req.params;
+        try {
+          const [result] = await pool.execute<ResultSetHeader>(
+            'UPDATE answers SET likes = likes + 1 WHERE id = ?',
+            [id]
+          );
+      
+          const [rows]: any = await pool.execute(
+            'SELECT likes FROM answers WHERE id = ?',
+            [id]
+          );
+      
+          const updatedLikes = rows[0]?.likes ?? 0;
+          res.json({ updatedLikes });
+        } catch (err) {
+          console.error(err);
+          res.status(500).json({ error: 'Failed to like answer' });
+        }
+      });
+      
+      
 
       
 

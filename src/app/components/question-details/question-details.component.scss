@@ -15,4 +15,32 @@
   .answer-card {
     margin-top: 15px;
   }
+  .question-details-container {
+    padding: 16px;
+    max-width: 800px;
+    margin: auto;
+  }
+  
+  .answer-card {
+    border: 1px solid #ccc;
+    padding: 12px;
+    margin-bottom: 12px;
+    border-radius: 6px;
+    background-color: #f9f9f9;
+  }
+  
+  .submit-answer {
+    margin-top: 24px;
+  
+    textarea {
+      width: 100%;
+      font-size: 1rem;
+    }
+  
+    button {
+      margin-top: 8px;
+      padding: 6px 16px;
+      font-weight: bold;
+    }
+  }
   

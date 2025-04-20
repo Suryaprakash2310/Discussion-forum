@@ -57,6 +57,22 @@ router.get('/:id', async (req: Request, res: Response) : Promise<any> => {
 });
 
 
+router.delete('/:id', async (req: Request, res: Response) : Promise<any> => {
+  const { id } = req.params;
+
+  try {
+    const [result] = await pool.execute('DELETE FROM questions WHERE id = ?', [id]);
+
+    if ((result as any).affectedRows === 0) {
+      return res.status(404).json({ message: 'Question not found' });
+    }
+
+    res.status(200).json({ message: 'Question deleted successfully' });
+  } catch (error) {
+    console.error('Error deleting question:', error);
+    res.status(500).json({ message: 'Failed to delete question' });
+  }
+});
 
 
 

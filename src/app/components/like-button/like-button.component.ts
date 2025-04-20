@@ -22,20 +22,20 @@ export class LikeButtonComponent {
 
   
   constructor(private http: HttpClient, private answerService: AnswerService) {}
-
   like() {
-    if (this.isLiking) return; // Prevent multiple clicks
+    if (!this.answerId || this.isLiking) return;
+
     this.isLiking = true;
-  
-    this.http.put(`http://localhost:3000/api/answers/${this.answerId}/like`, {})
+    this.http.put<{ updatedLikes: number }>(`http://localhost:3000/api/answers/${this.answerId}/like`, {})
       .subscribe({
-        next: (data: any) => {
-          this.likes = data.updatedLikes;
-          this.isLiking = false; // 🔁 Reset the loading flag
+        next: (res) => {
+          this.likes = res.updatedLikes; // Update the likes with value from DB
+          this.liked.emit(); // Notify parent if needed
+          this.isLiking = false;
         },
-        error: err => {
+        error: (err) => {
           console.error('Error liking answer:', err);
-          this.isLiking = false; // 🛠️ Don't forget to reset on error too
+          this.isLiking = false;
         }
       });
   }
