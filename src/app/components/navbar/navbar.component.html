@@ -1,7 +1,17 @@
-<mat-toolbar color="primary">
+<!-- <mat-toolbar color="primary">
     <span class="app-title">🗨️ Discussion Forum</span>
     <span class="spacer"></span>
     <button mat-button routerLink="/questions">All Questions</button>
     <button mat-button routerLink="/questions/new">Ask Question</button>
   </mat-toolbar>
-  
+   -->
+<mat-toolbar color="primary">
+  <span class="logo">🗨️ Discussion Forum</span>
+  <span class="spacer"></span>
+  <!-- This will push the button to the right -->
+  <button mat-button routerLink="/" class="btn">Home</button>
+  <button mat-button routerLink="/questions/discover" class="btn">
+    Discover
+  </button>
+  <!-- Right-aligned button -->
+</mat-toolbar>

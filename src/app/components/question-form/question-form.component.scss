@@ -1,5 +1,49 @@
-.full-width {
-    width: 100%;
-    margin-bottom: 15px;
+
+:host {
+  display: flex;
+  justify-content: center;
+  padding: 2rem;  
+}
+
+mat-card {
+  width: 100%;
+  max-width: 600px;
+  padding: 1.5rem;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  border-radius: 12px;
+  margin-top: 3rem;
+}
+
+mat-card-title {
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin-bottom: 1rem;
+  text-align: center;
+}
+
+mat-form-field.full-width {
+  width: 100%;
+  margin-bottom: 20px;
+}
+
+mat-card-actions {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 1rem;
+}
+
+button {
+  padding: 0.8rem 2.5rem; // Increase padding for bigger button
+  font-size: 1.1rem;  
+  font-weight: 500;
+  color: #f44336 !important; /* red text */
+  border: 1px solid #f44336; /* red border */
+  background-color: transparent; /* no fill */
+  border-radius: 10px; 
+  transition: background-color 0.3s ease, color 0.3s ease;
+
+  &:hover {
+    background-color: #f44336; // Material blue
+    color: white !important;
   }
-  
+}

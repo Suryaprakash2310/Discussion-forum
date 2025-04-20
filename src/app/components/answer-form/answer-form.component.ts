@@ -9,13 +9,8 @@ import { HttpClient } from '@angular/common/http';
   selector: 'app-answer',
   standalone: true,
   imports: [CommonModule, FormsModule, MatButtonModule, ReactiveFormsModule],
-  template: `
-    <h4>Submit an Answer</h4>
-    <textarea [(ngModel)]="answerText" rows="4" placeholder="Write your answer..."></textarea>
-<br />
-<button (click)="submitAnswer()">Submit Answer</button>
-<p *ngIf="message">{{ message }}</p>
-  `
+  templateUrl: './answer-form.component.html',
+  styleUrls: ['./answer-form.component.scss']
 })
 export class AnswerComponent {
   @Input() questionId!: number;
@@ -23,6 +18,7 @@ export class AnswerComponent {
 
   answerText: string = '';
   message: string = '';
+  hideMessage: boolean = false;  // Flag to control hiding the message
   @Input() answer: any;
 
   constructor(private http: HttpClient) {}
@@ -37,6 +33,13 @@ export class AnswerComponent {
       next: () => {
         this.message = 'Answer submitted!';
         this.answerText = '';
+
+                // Hide the answer message after 3 seconds
+                setTimeout(() => {
+                  this.message = '';  // Clear the success message after a timeout
+                }, 4000);  // Adjust the time (3000ms = 3 seconds)
+        
+
         this.answerSubmitted.emit(); // Notify parent to refresh
       },
       error: err => {

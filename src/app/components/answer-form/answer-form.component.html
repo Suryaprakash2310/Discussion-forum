@@ -1,10 +1,16 @@
+<h4>Submit an Answer</h4>
+<div class="answer-input-container">
+  <textarea
+    [(ngModel)]="answerText"
+    rows="2"
+    placeholder="Share your Thoughts..."
+  ></textarea>
+  <button (click)="submitAnswer()">Submit</button>
+</div>
+<p *ngIf="message" [ngClass]="{ 'success-message': true, hide: hideMessage }">
+  {{ message }}
+</p>
 
-  <h4>Submit an Answer</h4>
-  <textarea [(ngModel)]="answerText" rows="4" placeholder="Write your answer..."></textarea>
-<br />
-<button (click)="submitAnswer()">Submit Answer</button>
-<p *ngIf="message">{{ message }}</p>
-<div class="answer-box">
+<div class="answer-box" *ngIf="answer">
   <p>{{ answer.answer_text }}</p>
- 
 </div>

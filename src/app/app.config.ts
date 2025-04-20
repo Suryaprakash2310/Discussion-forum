@@ -10,6 +10,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatChipsModule } from '@angular/material/chips';
 import { provideAnimations } from '@angular/platform-browser/animations';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { MatMenuModule } from '@angular/material/menu'; // Add this line
 
 export const appConfig = {
   providers: [
@@ -24,6 +25,7 @@ export const appConfig = {
       MatIconModule,
       MatChipsModule,
       FormsModule,
+      MatMenuModule, 
       ReactiveFormsModule
     )
   ]

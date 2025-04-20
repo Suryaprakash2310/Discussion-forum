@@ -1,9 +1,49 @@
-.app-title {
-    font-weight: bold;
-    font-size: 20px;
+mat-toolbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+  background-color: #f44336 !important; // Red color for the entire toolbar
+   // Text color for toolbar items
+  height: 80px; /* Increased from default 64px */
+  padding: 0 24px;
+}
+
+.btn {
+  color: white !important;                 // White text
+  background-color: transparent;           // Transparent background                // White border
+  padding: 8px 16px;                       // Comfortable padding                    // Slightly rounded corners
+  font-size: 24px;                         // Appropriate font size
+  cursor: pointer;        
+  border: 2px solid transparent;                  // Pointer cursor on hover
+  transition: all 0.3s ease;               // Smooth transition for effects
+
+  // Hover state
+  &:hover {
+    border: 2px solid #f44336;
+    transition: all 0.3s ease;
+    border-color: white;
   }
-  
-  .spacer {
-    flex: 1 1 auto;
+
+  // Active state (when clicked)
+  &:active {
+    transform: translateY(0);              // Reset lift effect
+    box-shadow: none;                      // Remove shadow
   }
-  
+
+  // Disabled state
+  &:disabled {
+    opacity: 0.5;                          // Semi-transparent
+    cursor: not-allowed;                   // Disabled cursor
+  }
+}
+.logo {
+  font-weight: bold;
+  font-size: 24px;
+  color: white; // Changed to white to contrast with red background
+}
+
+.spacer {
+  flex-grow: 1;
+}
+

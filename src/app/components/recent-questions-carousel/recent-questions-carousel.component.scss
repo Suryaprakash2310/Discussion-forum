@@ -1,0 +1,115 @@
+.welcome-section {
+    width: 95vw; /* Reduced width */
+    margin-left: calc(-40vw + 36%);  /* Cancel container centering */
+    background: white;
+    padding: 20px 20px; 
+    font-size:larger;
+    text-align: center;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+    box-sizing: border-box;  
+    margin-bottom: 20px;
+  }
+  
+  .welcome-section h2 {
+    font-size: 2.2em;
+    margin-bottom: 12px;
+    color: #2c3e50;
+    font-weight: 600;
+  }
+  
+  .welcome-section p {
+    font-size: 1.1em;
+    font-style: italic;
+    color: #353434;
+    font-weight: 300;
+    line-height: 1.6;
+  }
+  .caro {
+    width: 95vw;
+    position: relative;
+    margin-left: calc(-40vw + 36%);
+  }
+
+  .carousel-wrapper {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 30px;
+    justify-content: center;
+  }
+
+  .carousel-card {
+    width: 530px;
+    height: 300px;
+    background-color: #fff;
+    border-radius: 16px; /* Softer corners */
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.1); /* More depth */
+    overflow: hidden;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    margin-bottom: 30px;
+    display: flex;
+    flex-direction: column;
+}
+
+.carousel-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 10px 24px rgba(0, 0, 0, 0.15);
+  }
+
+  .carousel-link {
+    text-decoration: none; /* Removes the underline */
+    color: inherit; /* Ensures the text color stays the same */
+  }
+  
+  .carousel-content {
+    padding: 20px 24px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    flex-grow: 1;
+    background: linear-gradient(to bottom, #ffffff, #f8f9fa); /* soft fade */
+  }
+  .carousel-content h3 {
+    font-size: 1.5rem;
+    color: #2c3e50;
+    margin-bottom: 12px;
+    font-weight: 700;
+    line-height: 1.3;
+  }
+  
+  .carousel-content p {
+    font-size: 1rem;
+    color: #555;
+    margin-bottom: 0;
+    line-height: 1.5;
+    flex-grow: 1;
+  }
+  .post-btn {
+    position: fixed;
+    bottom: 80px;
+    right: 100px;
+    background-color: #f44336;
+    color: white;
+    font-weight: bold;
+    font-size: 24px; /* Increase font size for better legibility */
+    z-index: 1000;
+   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    padding: 16px 24px; /* Larger padding for a bigger button */
+    border-radius: 50%; /* This will make the button round */
+    width: 80px; /* Set width */
+    height: 80px; /* Set height to make it a perfect circle */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    transition: all 0.3s ease-in-out;
+    outline: none;
+  
+    
+    // Add hover effect
+    &:hover {
+      transform: scale(1.05);
+      transition: transform 0.5s ease, background-color 0.3s ease;
+    }
+    
+  }
+  

@@ -1,4 +1,3 @@
-//question-list.component.ts
 //import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { MatCardModule } from '@angular/material/card';
@@ -11,6 +10,9 @@ import { MatChipsModule } from '@angular/material/chips';
 import { MATERIAL_IMPORTS } from '../../material';
 import { Component, OnInit } from '@angular/core';
 import { QuestionService, Question } from '../../services/question.service';
+import { RecentQuestionsCarouselComponent } from '../recent-questions-carousel/recent-questions-carousel.component';
+import { MatIconModule } from '@angular/material/icon';
+import { MatButtonModule } from '@angular/material/button';
 
 @Component({
   selector: 'app-question-list',
@@ -19,7 +21,11 @@ import { QuestionService, Question } from '../../services/question.service';
     CommonModule,
     FormsModule,
     RouterModule,
-    MATERIAL_IMPORTS
+    // RecentQuestionsCarouselComponent,
+    MATERIAL_IMPORTS,
+    MatButtonModule,
+    MatIconModule,
+
   ],
   templateUrl: './question-list.component.html',
   styleUrls: ['./question-list.component.scss']
@@ -28,6 +34,7 @@ export class QuestionListComponent implements OnInit {
   questions: Question[] = [];
   searchTerm: string = '';
   filterBy: 'latest' | 'mostLiked' = 'latest';
+  // recentQuestions: Question[] = [];
 
   constructor(private questionService: QuestionService) {}
 
@@ -40,6 +47,15 @@ export class QuestionListComponent implements OnInit {
         console.error('Error fetching questions', err);
       }
     });
+
+    // this.questionService.getRecentQuestions(6).subscribe({
+    //   next: (data: Question[]) => {
+    //     this.recentQuestions = data;  // Make sure this is an array with 6 items
+    //   },
+    //   error: (err: any) => {
+    //     console.error('Error fetching recent questions', err);
+    //   }
+    // });
   }
 
   get filteredQuestions() {
@@ -64,5 +80,4 @@ export class QuestionListComponent implements OnInit {
       }
     });
   }
-  
 }

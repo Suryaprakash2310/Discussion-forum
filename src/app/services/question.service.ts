@@ -28,5 +28,10 @@ export class QuestionService {
   deleteQuestion(id: number) {
     return this.http.delete(`http://localhost:3000/questions/${id}`);
   }
+
+  getRecentQuestions(limit: number) {
+    return this.http.get<Question[]>(`${this.baseUrl}?_sort=created_at&_order=desc&_limit=${limit}`);
+  }
+  
   
 }

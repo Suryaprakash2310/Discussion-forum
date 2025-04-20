@@ -1,40 +1,194 @@
-.filter-bar {
-    display: flex;
-    gap: 15px;
-    margin-bottom: 20px;
-  }
-  
-  .search-field, .sort-field {
-    flex: 1;
-  }
-  
-  .question-card {
-    margin-bottom: 20px;
-  }
-  
-  .tags {
-    margin-top: 10px;
-  }
-  .tag-list {
-    display: flex;
-    gap: 8px;
-    margin-top: 10px;
-    flex-wrap: wrap;
-  }
-  
-  .tag {
-    display: inline-block;
-  background-color: #e0f2f1;
-  color: #00695c;
-  padding: 4px 10px;
+/* Styles for the entire page */
+.question-card {
+  background-color: #f5f8f7; // soft gray-green background
   border-radius: 20px;
-  font-size: 13px;
-  margin-right: 5px;
+  padding: 15px;
+  margin-bottom: 20px;
+  box-shadow: 2px; 
+  display: flex;
+  border-radius: 8px;
+  flex-direction: column;
+  gap: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+}
+.question-card:hover {
+  transform: translateY(-5px); /* Slight lift when hovered */
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* Increase shadow on hover */
+}
+/* Filter bar */
+/* Filter bar - display search and sort fields inline */
+.filter-bar {
+  display: flex;
+  gap: 15px;
+  margin-bottom: 20px;
+  font-weight: 700;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 0;
+}
+
+.search-field, .sort-field {
+  flex: 1;
+}
+
+
+.mat-form-field {
+  margin: 0; /* Remove default margin for Material form fields */
+  padding: 0; /* Remove padding if present */
+}
+
+.search-field {
+  flex: 1; /* Allow search field to expand to available space */
+}
+
+.sort-field {
+  margin-left: 8px; /* Optional: small gap between fields if needed */
+}
+
+
+/* Ask button positioning */
+.post-btn {
+  position: fixed;
+  bottom: 100px;
+  right: 100px;
+  background-color: #f44336;
+  color: white;
+  font-weight: bold;
+  font-size: 24px; /* Increase font size for better legibility */
+  z-index: 1000;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  padding: 16px 24px; /* Larger padding for a bigger button */
+  border-radius: 50%; /* This will make the button round */
+  width: 80px; /* Set width */
+  height: 80px; /* Set height to make it a perfect circle */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  transition: all 0.3s ease-in-out;
+
+
+  
+  // Add hover effect
+  &:hover {
+    transform: scale(1.05);
+    transition: transform 0.5s ease, background-color 0.3s ease;
   }
   
-  mat-card {
-    margin-bottom: 20px;
-    padding: 16px;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-    border-radius: 12px;
-  }
+}
+
+/* Footer styles */
+
+.question-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 12px;
+  padding-top: 10px;
+  border-top: 1px solid #e0e0e0;
+  font-size: 16px;
+  color: #444;
+}
+
+.icon-label {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.icon-circle {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  font-size: 18px;
+  background-color: #f1f1f1;
+}
+.icon-like {
+  background-color: #ffcdd2;
+}
+
+.icon-date {
+  background-color: #c8e6c9;
+}
+
+
+/* Styles for tag list */
+.tag-list {
+  display: flex; /* Use flexbox to align items */
+  align-items: center; /* Vertically align items */
+  gap: 8px; /* Space between label and tags */
+  font-size: 20px;
+  margin-left: 0;     /* Ensure no unwanted left margin */
+  padding-left: 0; 
+}
+
+.tag {
+  display: inline-block;
+  background-color: #c8e6c9; /* light green background */
+  color: #1b5e20;
+  padding: 8px 17px; 
+  border-radius: 20px;
+  font-size: 15px;
+
+}
+
+.tag-label {
+  color: #777;
+  font-weight: 500;
+  margin-left: 0px;
+  margin-right: 2px;
+  font-style: italic;
+  font-size: 17px; /* Slightly larger than tag text */
+}
+
+/* Card content */
+mat-card-content p {
+  font-style: italic;
+  font-weight: 500;
+  color: #777; /* lighter shade of gray */
+  font-size: 17px;
+
+  white-space: nowrap;         /* force single line */
+  overflow: hidden;            /* hide overflow */
+  text-overflow: ellipsis;     /* add "..." when overflowed */
+  margin: 0 0 8px 0;
+}
+
+.custom-view-button {
+  color: #f44336;               /* red text */
+  border: 1px solid #f44336;    /* red border */
+  border-radius: 20px;
+  padding: 6px 16px;
+  font-weight: 600;
+  transition: all 0.3s ease;
+}
+
+.custom-view-button:hover {
+  background-color: #f44336;
+  color: white;
+}
+.card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.delete-button {
+  position: absolute;
+  top: 0;
+  right: 0;
+  margin: 8px;
+}
+
+mat-card-title {
+  flex-grow: 1;
+  margin-left: 12px;
+  font-size: 1.5rem; /* Larger font size */
+  font-weight: bold; /* Bold text */
+}
+

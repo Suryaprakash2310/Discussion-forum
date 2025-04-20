@@ -1,25 +1,39 @@
-<!-- Display the question -->
-<mat-card *ngIf="question">
-  <mat-card-title>{{ question.title }}</mat-card-title>
-  <mat-card-content>{{ question.description }}</mat-card-content>
+<mat-card class="question-detail-card">
+  <mat-card-title class="question-title">{{ question?.title }}</mat-card-title>
+  <mat-card-content class="question-description">{{
+    question?.description
+  }}</mat-card-content>
 </mat-card>
-<h3>Answers</h3>
-<div *ngIf="answers.length === 0">No answers yet.</div>
+
+<div class="answer-form-container">
+  <app-answer
+    [questionId]="questionId"
+    (answerSubmitted)="onAnswerSubmitted()"
+  ></app-answer>
+</div>
+
+<!-- Answer Section -->
+<!-- Answer Section -->
+<h3 class="answer-heading">Answers</h3>
+<div *ngIf="answers.length === 0" class="no-answers">No answers yet.</div>
+
 <div *ngFor="let answer of answers">
-  <mat-card style="margin-bottom: 10px;">
-    <p>{{ answer.answer_text }}</p>
-    <small>{{ answer.created_at | date:'short' }}</small>
-    <app-like-button
+  <mat-card class="answer-card">
+    <div class="answer-text">{{ answer.answer_text }}</div>
+    <div class="answer-meta">
+      <small class="answer-date">
+        <span class="answer-emoji">🕒</span>
+        <span class="answer-time">{{
+          answer.created_at | date : "short"
+        }}</span>
+
+        <!-- Emoji for time -->
+      </small>
+      <app-like-button
         [answerId]="answer.id"
         [likes]="answer.likes"
         (liked)="fetchAnswers()"
       ></app-like-button>
+    </div>
   </mat-card>
 </div>
-
-
-<!-- Answer submission form -->
-<app-answer
-  [questionId]="questionId"
-  (answerSubmitted)="onAnswerSubmitted()">
-</app-answer>

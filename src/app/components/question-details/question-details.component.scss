@@ -1,46 +1,123 @@
-.tags {
-    margin-top: 10px;
-    display: flex;
-    gap: 8px;
-    flex-wrap: wrap;
-  }
+/* Style the question detail card */
+.question-detail-card {
+  background-color: white; /* Light background */
+  border-radius: 16px;
+  padding: 20px; /* Added extra padding for spacing */
+  margin-bottom: 24px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+/* Style the question title */
+.question-title {
+  font-size: 28px; /* Larger font size for better emphasis */
+  font-weight: 700; /* Bolder font weight */
+  color: #2c3e50; /* Darker text for better readability */
+  margin-bottom: 12px; /* Added more space below the title */
+  text-transform: capitalize; /* Make the first letter of each word capitalized */
+  letter-spacing: 0.5px; /* Slightly increased letter spacing for elegance */
+  line-height: 1.4; /* Improve readability with slightly more line height */
+  font-family: 'Helvetica Neue', sans-serif; /* Clean, modern font family */
+}
+
+/* Style the question description */
+.question-description {
+  padding-left: 0px;
+  font-size: 18px; /* Increased font size for better readability */
+  font-weight: 400; /* Regular weight for the description text */
+  color: #767575; /* Slightly lighter gray for the description */
+  line-height: 1.6; /* Increased line height for better text flow */
+  margin-bottom: 16px; /* Added more space at the bottom */
+  font-family: 'Arial', sans-serif; /* More familiar sans-serif font */
+  text-align: justify; /* Justify the text for a clean look */
+  font-style: italic;
+}
+
+// answer styles
+
+/* Answer Heading */
+.answer-heading {
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 15px;
+  color: #333;
+}
+
+/* Style for the answer section */
+.no-answers {
+  font-size: 16px;
+  color: #757575;
+  margin-top: 10px;
+}
+
+/* Answer Card Style */
+.answer-card {
+  margin-bottom: 15px;
+  padding: 15px;
+  background-color: #f9f9f9;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.answer-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Answer text style */
+.answer-text {
+  font-size: 16px;
+  line-height: 1.5;
+  color: #333;
+  font-weight: 550;
+  margin-bottom: 10px;
+}
+
+/* Answer meta (date and like button) styling */
+.answer-meta {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 14px;
+  color: #757575;
   
-  .tag {
-    background-color: #e0e0e0;
-    padding: 4px 10px;
-    border-radius: 20px;
-    font-size: 13px;
-  }
-  
-  .answer-card {
-    margin-top: 15px;
-  }
-  .question-details-container {
-    padding: 16px;
-    max-width: 800px;
-    margin: auto;
-  }
-  
-  .answer-card {
-    border: 1px solid #ccc;
-    padding: 12px;
-    margin-bottom: 12px;
-    border-radius: 6px;
-    background-color: #f9f9f9;
-  }
-  
-  .submit-answer {
-    margin-top: 24px;
-  
-    textarea {
-      width: 100%;
-      font-size: 1rem;
-    }
-  
-    button {
-      margin-top: 8px;
-      padding: 6px 16px;
-      font-weight: bold;
-    }
-  }
-  
+}
+
+/* Date style */
+.answer-date {
+  font-weight: 500;
+  color: #9e9e9e;
+  font-style: italic;
+  transition: color 0.3s ease;
+}
+
+.answer-date:hover {
+  color: #616161;
+}
+.answer-emoji {
+  font-size: 15px;
+  font-style: normal;
+  color: #666; /* Light gray for the emoji */
+  margin-right: 5px; /* Space between emoji and time */
+}
+
+/* Style for the like button */
+app-like-button {
+  margin-left: 10px;
+  padding: 8px 16px;
+  border-radius: 20px; /* Rounded corners */
+  font-size: 14px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+
+// this is submit-ans
+.answer-form-container {
+  padding: 15px;
+  padding-top: 2px;
+  background-color: white; /* Changed from light gray to white */
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+}

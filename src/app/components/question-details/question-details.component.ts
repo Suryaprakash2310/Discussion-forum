@@ -10,7 +10,6 @@ import { AnswerService } from '../../services/answer.service';
 import { QuestionService, Question } from '../../services/question.service';
 import { HttpClient } from '@angular/common/http';
 import { LikeButtonComponent } from '../like-button/like-button.component';
-
 @Component({
   selector: 'app-question-details',
   standalone: true,

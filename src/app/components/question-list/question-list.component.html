@@ -1,8 +1,11 @@
-//question-list.component.html
 <div class="filter-bar">
   <mat-form-field appearance="outline" class="search-field">
     <mat-label>Search questions</mat-label>
-    <input matInput [(ngModel)]="searchTerm" placeholder="e.g., Angular routing">
+    <input
+      matInput
+      [(ngModel)]="searchTerm"
+      placeholder="e.g., Angular routing"
+    />
   </mat-form-field>
 
   <mat-form-field appearance="outline" class="sort-field">
@@ -14,18 +17,63 @@
   </mat-form-field>
 </div>
 
+<!-- <app-recent-questions-carousel></app-recent-questions-carousel> -->
+
 <mat-card *ngFor="let question of filteredQuestions" class="question-card">
-  <button mat-button color="warn" (click)="deleteQuestion(question.id)">Delete</button>
-  <mat-card-title>{{ question.title }}</mat-card-title>
-  <mat-card-subtitle>{{ question.created_at  }} | {{ question.likes }} Likes</mat-card-subtitle>
+  <div class="card-header">
+    <mat-card-title>{{ question.title }}</mat-card-title>
+    <!-- <button
+      mat-button
+      color="warn"
+      (click)="deleteQuestion(question.id)"
+      class="delete-button"
+    >
+      Delete
+    </button> -->
+    <button
+      mat-icon-button
+      class="delete-button"
+      (click)="deleteQuestion(question.id)"
+    >
+      <mat-icon>delete</mat-icon>
+    </button>
+  </div>
   <mat-card-content>
-    <p>{{ question.description }}</p>
+    <p>Description: {{ question.description }}</p>
     <div class="tag-list" *ngIf="question.tags?.length">
-        <span class="tag" *ngFor="let tag of question.tags">{{ tag }}</span>
-      </div>
+      <span class="tag-label">Tags:</span>
+      <span class="tag" *ngFor="let tag of question.tags">{{ tag }}</span>
+    </div>
   </mat-card-content>
   <mat-card-actions>
-    <button mat-button [routerLink]="['/questions', question.id]">View</button>
-
+    <button
+      mat-button
+      class="custom-view-button"
+      [routerLink]="['/questions', question.id]"
+    >
+      View
+    </button>
   </mat-card-actions>
+
+  <!-- Footer -->
+  <div class="question-footer">
+    <div class="icon-label">
+      <span class="icon-circle icon-like">❤️</span>
+      <span>{{ question.likes }} Likes</span>
+    </div>
+    <div class="icon-label">
+      <span class="icon-circle icon-date">📅</span>
+      <span>{{ question.created_at | date : "mediumDate" }}</span>
+    </div>
+  </div>
 </mat-card>
+
+<!-- Ask Button (Positioned at bottom right) -->
+<button
+  mat-raised-button
+  color="accent"
+  routerLink="/questions/new"
+  class="post-btn"
+>
+  Ask
+</button>
