@@ -1,0 +1,151 @@
+@use 'sass:color';
+
+
+.filter-bar {
+    display: flex;
+    gap: 15px;
+    margin-bottom: 20px;
+    font-weight: 700;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 0;
+  }
+  
+  .search-field, .sort-field {
+    flex: 1;
+  }
+
+  .question-card {
+    background-color: #f5f8f7; // soft gray-green background
+    border-radius: 20px;
+    padding: 16px;
+    margin-bottom: 20px;
+    box-shadow: 2px; 
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .question-card p {
+    font-style: italic;
+    color: #777; /* lighter shade of gray */
+    font-size: 17px;
+  
+    white-space: nowrap;         /* force single line */
+    overflow: hidden;            /* hide overflow */
+    text-overflow: ellipsis;     /* add "..." when overflowed */
+    margin: 0 0 8px 0;
+  }
+
+  mat-card-title {
+    font-size: 24px;
+    font-weight: bold;
+    color: #333;
+  }
+  
+  .question-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 12px;
+    padding-top: 10px;
+    border-top: 1px solid #e0e0e0;
+    font-size: 16px;
+    color: #444;
+  }
+  
+  .icon-label {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  
+  .icon-circle {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    font-size: 18px;
+    background-color: #f1f1f1;
+  }
+  
+  .icon-like {
+    background-color: #ffcdd2;
+  }
+  
+  .icon-date {
+    background-color: #c8e6c9;
+  }
+  
+  .tag-list {
+    display: flex; /* Use flexbox to align items */
+    align-items: center; /* Vertically align items */
+    gap: 8px; /* Space between label and tags */
+    font-size: 20px;
+    margin-left: 0;     /* Ensure no unwanted left margin */
+    padding-left: 0; 
+  }
+
+  .tag {
+    display: inline-block;
+    background-color: #f44336; /* red background */
+    color: white; /* white text */
+    padding: 8px 17px; 
+    border-radius: 20px;
+    font-size: 15px;
+  }
+
+  .tag-label {
+    margin-left: 0px;
+    margin-right: 2px;
+    font-style: italic;
+    font-size: 17px; /* Slightly larger than tag text */
+  }
+  
+  .post-btn {
+    position: fixed;
+    bottom: 100px;
+    right: 100px;
+    background-color: #f44336;
+    color: white;
+    font-weight: bold;
+    font-size: 24px; /* Increase font size for better legibility */
+    z-index: 1000;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    padding: 16px 24px; /* Larger padding for a bigger button */
+    border-radius: 50%; /* This will make the button round */
+    width: 80px; /* Set width */
+    height: 80px; /* Set height to make it a perfect circle */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    transition: all 0.3s ease-in-out;
+
+
+    
+    // Add hover effect
+    &:hover {
+      background-color: color.adjust(#f44336, $lightness: -5%);
+      transform: scale(1.05);
+      transition: transform 0.5s ease, background-color 0.3s ease;
+    }
+    
+  }
+  .custom-view-button {
+    color: #f44336;               /* red text */
+    border: 1px solid #f44336;    /* red border */
+    border-radius: 20px;
+    padding: 6px 16px;
+    font-weight: 600;
+    transition: all 0.3s ease;
+  }
+  
+  .custom-view-button:hover {
+    background-color: #f44336;
+    color: white;
+  }
+  

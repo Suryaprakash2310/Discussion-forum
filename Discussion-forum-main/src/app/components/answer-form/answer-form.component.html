@@ -1,0 +1,20 @@
+<h4 class="form-heading">Submit an Answer</h4>
+
+<textarea
+  [(ngModel)]="answerText"
+  rows="4"
+  placeholder="Write your answer..."
+  class="answer-input"
+></textarea>
+
+<br />
+
+<button mat-raised-button color="primary" (click)="submitAnswer()">
+  Submit Answer
+</button>
+
+<p class="message" *ngIf="message">{{ message }}</p>
+
+<div *ngIf="answer" class="answer-box">
+  <p>{{ answer.answer_text }}</p>
+</div>
