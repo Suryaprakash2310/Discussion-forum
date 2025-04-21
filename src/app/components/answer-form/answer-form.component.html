@@ -2,15 +2,48 @@
 <div class="answer-input-container">
   <textarea
     [(ngModel)]="answerText"
-    rows="2"
+    rows="4"
     placeholder="Share your Thoughts..."
+    class="answer-textarea"
   ></textarea>
-  <button (click)="submitAnswer()">Submit</button>
+
+  <!-- Submit Button next to textarea -->
+  <button (click)="submitAnswer()" class="submit-btn">Submit</button>
 </div>
+
+<!-- Button to toggle math symbols -->
+<button type="button" (click)="toggleSymbols()" class="toggle-symbols-btn">
+  {{ symbolsVisible ? "Hide Symbols" : "Show Symbols" }}
+</button>
+
+<!-- Math Symbol Buttons, only visible when symbolsVisible is true -->
+<div class="math-symbols" *ngIf="symbolsVisible">
+  <button type="button" (click)="insertSymbol('π')">π</button>
+  <button type="button" (click)="insertSymbol('√')">√</button>
+  <button type="button" (click)="insertSymbol('^')">^</button>
+  <button type="button" (click)="insertSymbol('+')">+</button>
+  <button type="button" (click)="insertSymbol('-')">-</button>
+  <button type="button" (click)="insertSymbol('*')">*</button>
+  <button type="button" (click)="insertSymbol('/')">/</button>
+  <button type="button" (click)="insertSymbol('=')">=</button>
+  <button type="button" (click)="insertSymbol('≠')">≠</button>
+  <button type="button" (click)="insertSymbol('≥')">≥</button>
+  <button type="button" (click)="insertSymbol('≤')">≤</button>
+  <button type="button" (click)="insertSymbol('∞')">∞</button>
+  <button type="button" (click)="insertSymbol('∑')">∑</button>
+  <button type="button" (click)="insertSymbol('∫')">∫</button>
+  <button type="button" (click)="insertSymbol('Δ')">Δ</button>
+  <button type="button" (click)="insertSymbol('θ')">θ</button>
+  <button type="button" (click)="insertSymbol('≈')">≈</button>
+  <button type="button" (click)="insertSymbol('∂')">∂</button>
+</div>
+
+<!-- Message Display -->
 <p *ngIf="message" [ngClass]="{ 'success-message': true, hide: hideMessage }">
   {{ message }}
 </p>
 
+<!-- Display Existing Answer (if any) -->
 <div class="answer-box" *ngIf="answer">
   <p>{{ answer.answer_text }}</p>
 </div>

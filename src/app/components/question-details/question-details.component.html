@@ -1,5 +1,7 @@
 <mat-card class="question-detail-card">
-  <mat-card-title class="question-title">{{ question?.title }}</mat-card-title>
+  <mat-card-title class="question-title"
+    >💬{{ question?.title }}</mat-card-title
+  >
   <mat-card-content class="question-description">{{
     question?.description
   }}</mat-card-content>
@@ -19,6 +21,11 @@
 
 <div *ngFor="let answer of answers">
   <mat-card class="answer-card">
+    <div class="answer-header">
+      <mat-icon class="profile-icon">account_circle</mat-icon>
+      <span class="user-name">User</span>
+    </div>
+
     <div class="answer-text">{{ answer.answer_text }}</div>
     <div class="answer-meta">
       <small class="answer-date">

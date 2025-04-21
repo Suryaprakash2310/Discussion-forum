@@ -9,6 +9,7 @@ import { AnswerComponent } from '../answer-form/answer-form.component';
 import { AnswerService } from '../../services/answer.service';
 import { QuestionService, Question } from '../../services/question.service';
 import { HttpClient } from '@angular/common/http';
+import { MatIconModule } from '@angular/material/icon';  // Import MatIconModule
 import { LikeButtonComponent } from '../like-button/like-button.component';
 @Component({
   selector: 'app-question-details',
@@ -20,6 +21,7 @@ import { LikeButtonComponent } from '../like-button/like-button.component';
     RouterModule,
     MatButtonModule,
     AnswerComponent,
+    MatIconModule,
     LikeButtonComponent,
   ],
   templateUrl: './question-details.component.html',
@@ -51,10 +53,12 @@ export class QuestionDetailsComponent implements OnInit {
 
   fetchQuestion() {
     this.http.get(`http://localhost:3000/questions/${this.questionId}`).subscribe({
-      next: (data: any) => this.question = data,
+      next: (data: any) => {
+        this.question = data;
+        console.log('📦 Question object:', this.question);  // 👈 Add this line
+      },
       error: err => console.error('Error fetching question', err)
     });
-  
   }
 
   fetchAnswers() {

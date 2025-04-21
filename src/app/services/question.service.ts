@@ -9,6 +9,8 @@ export interface Question {
   tags: string[];
   likes: number;
   created_at: string;
+  answers?: any[];
+  images: string;
 }
 
 @Injectable({ providedIn: 'root' })

@@ -1,1 +1,5 @@
-<button (click)="like()" [disabled]="isLiking">❤️ {{ likes }}</button>
+<!-- Like button -->
+<button (click)="like()" [disabled]="isLiking" class="like-btn">
+  <span class="heart-icon">❤️</span>
+  {{ likes }}
+</button>

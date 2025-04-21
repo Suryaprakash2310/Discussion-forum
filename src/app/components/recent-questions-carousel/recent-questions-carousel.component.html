@@ -17,17 +17,16 @@
 <div class="caro">
   <ng-container *ngIf="recentQuestions.length > 0">
     <owl-carousel-o [options]="carouselOptions">
-      <ng-container *ngFor="let question of recentQuestions">
+      <ng-container *ngFor="let question of recentQuestions; let i = index">
         <ng-template carouselSlide>
           <a [routerLink]="['/questions', question.id]" class="carousel-link">
             <div class="carousel-card">
               <img
-                src="https://tse2.mm.bing.net/th?id=OIP.ipfGiyG7ctjSkhmjCpNfTAHaFj&pid=Api&P=0&h=180"
-                style="width: 100%; max-height: 200px; object-fit: cover"
+                class="carousel-image"
+                [src]="imageList[i % imageList.length]"
               />
               <div class="carousel-content">
                 <h3>{{ question.title }}</h3>
-                <p>{{ question.description.split("\n")[0] }}</p>
               </div>
             </div>
           </a>

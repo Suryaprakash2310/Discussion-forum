@@ -1,74 +1,84 @@
-<div class="filter-bar">
-  <mat-form-field appearance="outline" class="search-field">
-    <mat-label>Search questions</mat-label>
-    <input
-      matInput
-      [(ngModel)]="searchTerm"
-      placeholder="e.g., Angular routing"
-    />
-  </mat-form-field>
+<div class="container" style="display: flex; gap: 20px; margin: 0; padding: 0">
+  <!-- Left section with questions -->
+  <div class="questions-section" style="flex: 3">
+    <div class="filter-bar">
+      <mat-form-field appearance="outline" class="search-field">
+        <mat-label>Search questions</mat-label>
+        <input
+          matInput
+          [(ngModel)]="searchTerm"
+          placeholder="e.g., Angular routing"
+        />
+      </mat-form-field>
 
-  <mat-form-field appearance="outline" class="sort-field">
-    <mat-label>Sort by</mat-label>
-    <mat-select [(ngModel)]="filterBy">
-      <mat-option value="latest">Latest</mat-option>
-      <mat-option value="mostLiked">Most Liked</mat-option>
-    </mat-select>
-  </mat-form-field>
+      <mat-form-field appearance="outline" class="sort-field">
+        <mat-label>Sort by</mat-label>
+        <mat-select [(ngModel)]="filterBy">
+          <mat-option value="all">All</mat-option>
+          <mat-option value="mostAnswered">Most Answered</mat-option>
+          <mat-option value="unanswered">Unanswered</mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+
+    <!-- Displaying the questions -->
+    <mat-card
+      *ngFor="let question of filteredQuestions"
+      class="question-card"
+      style="
+        margin-bottom: 16px;
+        width: 100%;
+        max-width: 750px;
+        margin-left: 0;
+        padding-left: 0;
+      "
+    >
+      <div class="card-header">
+        <div class="title-with-icon">
+          <mat-card-title>🗨️ {{ question.title }}</mat-card-title>
+        </div>
+
+        <button
+          mat-icon-button
+          class="delete-button"
+          (click)="deleteQuestion(question.id)"
+        >
+          <mat-icon>delete</mat-icon>
+        </button>
+      </div>
+      <mat-card-content>
+        <p>Description: {{ question.description }}</p>
+        <div class="tag-list" *ngIf="question.tags?.length">
+          <span class="tag-label">Tags:</span>
+          <span class="tag" *ngFor="let tag of question.tags">{{ tag }}</span>
+        </div>
+      </mat-card-content>
+      <mat-card-actions>
+        <button
+          mat-button
+          class="custom-view-button"
+          [routerLink]="['/questions', question.id]"
+        >
+          View
+        </button>
+      </mat-card-actions>
+
+      <!-- Footer -->
+      <div class="question-footer">
+        <div class="icon-label">
+          <span class="icon-circle icon-like">❤️</span>
+          <span>{{ question.answers?.length || 0 }} Answers</span>
+        </div>
+        <div class="icon-label">
+          <span class="icon-circle icon-date">📅</span>
+          <span>{{ question.created_at | date : "mediumDate" }}</span>
+        </div>
+      </div>
+    </mat-card>
+  </div>
 </div>
 
-<!-- <app-recent-questions-carousel></app-recent-questions-carousel> -->
-
-<mat-card *ngFor="let question of filteredQuestions" class="question-card">
-  <div class="card-header">
-    <mat-card-title>{{ question.title }}</mat-card-title>
-    <!-- <button
-      mat-button
-      color="warn"
-      (click)="deleteQuestion(question.id)"
-      class="delete-button"
-    >
-      Delete
-    </button> -->
-    <button
-      mat-icon-button
-      class="delete-button"
-      (click)="deleteQuestion(question.id)"
-    >
-      <mat-icon>delete</mat-icon>
-    </button>
-  </div>
-  <mat-card-content>
-    <p>Description: {{ question.description }}</p>
-    <div class="tag-list" *ngIf="question.tags?.length">
-      <span class="tag-label">Tags:</span>
-      <span class="tag" *ngFor="let tag of question.tags">{{ tag }}</span>
-    </div>
-  </mat-card-content>
-  <mat-card-actions>
-    <button
-      mat-button
-      class="custom-view-button"
-      [routerLink]="['/questions', question.id]"
-    >
-      View
-    </button>
-  </mat-card-actions>
-
-  <!-- Footer -->
-  <div class="question-footer">
-    <div class="icon-label">
-      <span class="icon-circle icon-like">❤️</span>
-      <span>{{ question.likes }} Likes</span>
-    </div>
-    <div class="icon-label">
-      <span class="icon-circle icon-date">📅</span>
-      <span>{{ question.created_at | date : "mediumDate" }}</span>
-    </div>
-  </div>
-</mat-card>
-
-<!-- Ask Button (Positioned at bottom right) -->
+<!-- Ask Button -->
 <button
   mat-raised-button
   color="accent"

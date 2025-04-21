@@ -66,7 +66,7 @@
 
 /* Answer text style */
 .answer-text {
-  font-size: 16px;
+  font-size: 20px;
   line-height: 1.5;
   color: #333;
   font-weight: 550;
@@ -78,7 +78,7 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  font-size: 14px;
+  font-size: 17px;
   color: #757575;
   
 }
@@ -120,4 +120,28 @@ app-like-button {
   background-color: white; /* Changed from light gray to white */
   border-radius: 12px;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+}
+.answer-card {
+  padding: 16px;
+  position: relative;
+}
+
+.answer-header {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.profile-icon {
+  width: 30px;
+  height: 30px;
+  margin-right: 0px;
+  color: #555; /* Optional: match your theme */
+}
+
+.user-name {
+  font-weight: bold;
+  font-size: 14px;
+  color: #9e9e9e;
+  font-style: italic;
 }

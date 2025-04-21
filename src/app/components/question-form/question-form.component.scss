@@ -36,14 +36,14 @@ button {
   padding: 0.8rem 2.5rem; // Increase padding for bigger button
   font-size: 1.1rem;  
   font-weight: 500;
-  color: #f44336 !important; /* red text */
-  border: 1px solid #f44336; /* red border */
+  color: #563de1 !important; /* red text */
+  border: 1px solid #563de1; /* red border */
   background-color: transparent; /* no fill */
   border-radius: 10px; 
   transition: background-color 0.3s ease, color 0.3s ease;
 
   &:hover {
-    background-color: #f44336; // Material blue
+    background-color: #563de1; // Material blue
     color: white !important;
   }
 }

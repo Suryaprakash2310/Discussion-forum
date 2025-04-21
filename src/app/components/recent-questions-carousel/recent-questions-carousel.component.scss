@@ -36,7 +36,13 @@
     gap: 30px;
     justify-content: center;
   }
-
+  .carousel-image {
+    width: 100%;
+    height: 200px; /* Adjust this value based on design */
+    object-fit: cover;
+    border-bottom: 1px solid #eee;
+  }
+  
   .carousel-card {
     width: 530px;
     height: 300px;
@@ -48,12 +54,14 @@
     margin-bottom: 30px;
     display: flex;
     flex-direction: column;
+    position: relative; 
 }
 
 .carousel-card:hover {
-    transform: translateY(-6px);
-    box-shadow: 0 10px 24px rgba(0, 0, 0, 0.15);
-  }
+  transform: translateY(-8px); /* Slightly higher lift */
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.15); /* Increased shadow depth */
+}
+
 
   .carousel-link {
     text-decoration: none; /* Removes the underline */
@@ -61,11 +69,12 @@
   }
   
   .carousel-content {
-    padding: 20px 24px;
+    padding:0px 10px;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     flex-grow: 1;
+    overflow: hidden;
     background: linear-gradient(to bottom, #ffffff, #f8f9fa); /* soft fade */
   }
   .carousel-content h3 {
@@ -74,25 +83,23 @@
     margin-bottom: 12px;
     font-weight: 700;
     line-height: 1.3;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap; /* Keep it on one line */
+    word-break: break-word; /* Allow long words to break */
   }
   
-  .carousel-content p {
-    font-size: 1rem;
-    color: #555;
-    margin-bottom: 0;
-    line-height: 1.5;
-    flex-grow: 1;
-  }
+  
   .post-btn {
     position: fixed;
-    bottom: 80px;
+    bottom: 50px;
     right: 100px;
-    background-color: #f44336;
+    background-color: #563de1;
     color: white;
     font-weight: bold;
     font-size: 24px; /* Increase font size for better legibility */
     z-index: 1000;
-   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
     padding: 16px 24px; /* Larger padding for a bigger button */
     border-radius: 50%; /* This will make the button round */
     width: 80px; /* Set width */

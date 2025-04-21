@@ -1,0 +1,39 @@
+/* Like button styling */
+.like-btn {
+    background-color: #f1e6ff; /* Pinkish color for like button */
+    color: black; /* Text color */
+    padding: 10px 20px; /* Padding around the icon and text */
+    font-size: 16px; /* Font size */
+    font-weight: bold; /* Make the text bold */
+    border: none; /* Remove default border */
+    border-radius: 25px; /* Round corners for a pill shape */
+    display: flex;
+    align-items: center; /* Center the icon and text */
+    cursor: pointer; /* Pointer cursor to indicate clickability */
+    transition: all 0.3s ease; /* Smooth transition for hover effect */
+  }
+  
+  .like-btn:hover {
+    border: 2px solid #6a0dad; /* Add purple border on hover */
+    transform: scale(1.05); /* Slightly increase button size on hover */
+    background-color: #f1e6ff; /* Keep the same background color on hover */
+  }
+  
+  /* Like button when disabled (while it's liking) */
+  .like-btn:disabled {
+    background-color: #ccc; /* Grey background when disabled */
+    cursor: not-allowed; /* Indicate that it's not clickable */
+  }
+  
+  /* Like button icon (heart) styling */
+  .like-btn .heart-icon {
+    margin-right: 10px; /* Space between icon and text */
+    font-size: 18px; /* Size of the heart icon */
+  }
+  
+  /* Like count text styling */
+  .like-btn span {
+    margin-left: 5px; /* Space between the icon and the like count */
+    font-size: 14px; /* Font size for like count */
+  }
+  

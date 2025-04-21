@@ -1,4 +1,3 @@
-//import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { MatCardModule } from '@angular/material/card';
 import { MatInputModule } from '@angular/material/input';
@@ -10,7 +9,7 @@ import { MatChipsModule } from '@angular/material/chips';
 import { MATERIAL_IMPORTS } from '../../material';
 import { Component, OnInit } from '@angular/core';
 import { QuestionService, Question } from '../../services/question.service';
-import { RecentQuestionsCarouselComponent } from '../recent-questions-carousel/recent-questions-carousel.component';
+import { AnswerService } from '../../services/answer.service';  // Make sure you have this service
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 
@@ -21,11 +20,10 @@ import { MatButtonModule } from '@angular/material/button';
     CommonModule,
     FormsModule,
     RouterModule,
-    // RecentQuestionsCarouselComponent,
     MATERIAL_IMPORTS,
     MatButtonModule,
     MatIconModule,
-
+    MatCardModule
   ],
   templateUrl: './question-list.component.html',
   styleUrls: ['./question-list.component.scss']
@@ -33,44 +31,71 @@ import { MatButtonModule } from '@angular/material/button';
 export class QuestionListComponent implements OnInit {
   questions: Question[] = [];
   searchTerm: string = '';
-  filterBy: 'latest' | 'mostLiked' = 'latest';
-  // recentQuestions: Question[] = [];
+  filterBy: 'mostAnswered' | 'unanswered' | 'all' = 'all';
 
-  constructor(private questionService: QuestionService) {}
+  trendingTopics = [
+    'Angular 15 Released!',
+    'How to Optimize Angular Apps',
+    'Latest Trends in Frontend Development',
+    'Understanding Reactive Programming',
+    'Node.js Performance Tips'
+  ];
+
+
+  constructor(
+    private questionService: QuestionService,
+    private answerService: AnswerService  // Inject AnswerService
+  ) {}
 
   ngOnInit(): void {
     this.questionService.getAllQuestions().subscribe({
       next: (data) => {
         this.questions = data;
+        this.questions.forEach((question) => {
+          this.fetchAnswersForQuestion(question);  // Fetch answers for each question
+        });
       },
       error: (err) => {
         console.error('Error fetching questions', err);
       }
     });
-
-    // this.questionService.getRecentQuestions(6).subscribe({
-    //   next: (data: Question[]) => {
-    //     this.recentQuestions = data;  // Make sure this is an array with 6 items
-    //   },
-    //   error: (err: any) => {
-    //     console.error('Error fetching recent questions', err);
-    //   }
-    // });
   }
 
-  get filteredQuestions() {
+  // Fetch answers for a specific question
+  fetchAnswersForQuestion(question: Question): void {
+    this.answerService.getAnswersByQuestionId(question.id).subscribe({
+      next: (answers) => {
+        question.answers = answers;  // Store answers inside the question object
+      },
+      error: (err) => {
+        console.error('Error fetching answers', err);
+      }
+    });
+  }
+
+  get filteredQuestions(): Question[] {
     let filtered = this.questions.filter(q =>
       q.title.toLowerCase().includes(this.searchTerm.toLowerCase())
     );
-
-    return this.filterBy === 'latest'
-      ? filtered.sort((a, b) => new Date(b.created_at).getTime() - new Date(a.created_at).getTime())
-      : filtered.sort((a, b) => b.likes - a.likes);
+  
+    switch (this.filterBy) {
+      case 'mostAnswered':
+        return filtered.sort((a, b) =>
+          (b.answers?.length || 0) - (a.answers?.length || 0)
+        );
+      case 'unanswered':
+        return filtered.filter(q => !q.answers || q.answers.length === 0);
+      case 'all':
+        return filtered; // Show all questions with no specific filter
+      default:
+        return filtered;
+    }
   }
+  
 
   deleteQuestion(id: number) {
     if (!confirm('Are you sure you want to delete this question?')) return;
-  
+
     this.questionService.deleteQuestion(id).subscribe({
       next: () => {
         this.questions = this.questions.filter(q => q.id !== id);

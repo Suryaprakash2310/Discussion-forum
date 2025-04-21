@@ -1,104 +1,159 @@
-/* Container */
-/* Flex container for textarea + button */
+/* ========== Answer Input Container ========== */
 .answer-input-container {
-    display: flex;
-    align-items: center; /* Vertically align the items */
-    gap: 10px; /* Space between the textarea and button */
-    flex-wrap: wrap;
-  }
-  
-  /* Keep textarea flexible */
-  .answer-input-container textarea {
-    width: 750px; /* keep your preferred width */
-    height: 25px; /* smaller height */
-    padding: 8px 10px;
-    font-size: 14px;
-    border: 1px solid #ccc;
-    border-radius: 6px;
-    resize: none; /* disable resizing if you want consistent size */
-    background-color: #fff;
-    transition: border-color 0.3s ease;
-  }
-  
-  
-  /* Ensure button aligns well */
-  .answer-input-container button {
-    padding: 0 20px;
-    font-size: 15px;
-    margin-bottom: 11px;
-    font-weight: 500;
-    color: white;
-    background-color: #e53935;
-    border: none;
-    border-radius: 6px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-    height: 42px; /* Same height as textarea */
-    line-height: 42px; /* Vertical centering */
-  }
-  
-  /* Header */
-  h4 {
-    font-size: 20px;
-    font-weight: 600;
-    margin-bottom: 12px;
-    color: #2c3e50;
-  }
-  
-  /* Textarea */
-  textarea {
-    width: 100%;
-    padding: 12px;
-    font-size: 16px;
-    border: 1px solid #ccc;
-    border-radius: 6px;
-    resize: vertical;
-    background-color: #fff;
-    transition: border-color 0.3s ease;
-  }
-  
-  textarea:focus {
-    border-color: #1976d2;
-    outline: none;
-  }
-  
-  /* Button */
-  button {
-    margin-top: 12px;
-    padding: 10px 20px;
-    font-size: 15px;
-    font-weight: 500;
-    color: white;
-    background-color: #e53935;
-    border: none;
-    border-radius: 6px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-  }
-  
-  button:hover {
-    background-color: #c62828;
-  }
-  
-  /* Message text */
-  p[ng-reflect-ng-if] {
-    color: #2e7d32;
-    font-weight: 500;
-    margin-top: 10px;
-  }
-  
-  /* Style for the success message */
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+.answer-input-container textarea {
+  width: 750px;
+  height: 30px;
+  padding: 8px 10px;
+  font-size: 14px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  resize: none;
+  background-color: #fff;
+  transition: border-color 0.3s ease;
+}
+
+/* Submit Button */
+.answer-input-container button {
+  padding: 0 20px;
+  font-size: 15px;
+  margin-bottom: 11px;
+  font-weight: 500;
+  display: flex;
+  flex-direction: column;
+  color: white;
+  background-color: #563de1;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  height: 42px; /* Same height as textarea */
+  line-height: 42px; /* Vertical centering */
+
+}
+
+.answer-input-container button:hover {
+  background-color: #402bbd;
+}
+
+/* ========== Header ========== */
+h4 {
+  font-size: 20px;
+  font-weight: 600;
+  margin-bottom: 12px;
+  color: #2c3e50;
+}
+
+/* ========== General Textarea ========== */
+textarea {
+  width: 100%;
+  padding: 12px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  resize: vertical;
+  background-color: #fff;
+  transition: border-color 0.3s ease;
+}
+
+textarea:focus {
+  border-color: #1976d2;
+  outline: none;
+}
+
+/* ========== Generic Button ========== */
+button {
+  margin-top: 12px;
+  padding: 10px 20px;
+  font-size: 15px;
+  font-weight: 500;
+  color: white;
+  background-color: #563de1;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+button:hover {
+  background-color: #402bbd;
+}
+
+/* ========== Success Message ========== */
 .success-message {
-    color: #4caf50;
-    padding: 10px;
-    border-radius: 5px;
-    font-weight: 600;
-    margin-top: 15px;
-    text-align: center;
-    transition: opacity 1s ease-out; /* Smooth fade-out transition */
-  }
-  
-  .success-message.hide {
-    opacity: 0;
-  }
-  
+  color: #4caf50;
+  padding: 10px;
+  border-radius: 5px;
+  font-weight: 600;
+  margin-top: 15px;
+  text-align: center;
+  transition: opacity 1s ease-out;
+}
+
+.success-message.hide {
+  opacity: 0;
+}
+
+/* ========== Symbols Toggle and Symbol Buttons ========== */
+.symbols-container {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-top: 12px;
+  flex-wrap: wrap;
+}
+
+.symbol-toggle-btn {
+  height: 42px;
+  padding: 10px 16px;
+  font-size: 15px;
+  font-weight: 500;
+  color: white;
+  background-color: #563de1;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.symbol-toggle-btn:hover {
+  background-color: #402bbd;
+}
+
+.math-symbols {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.math-symbols button {
+  padding: 8px 14px;
+  font-size: 16px;
+  font-weight: 550; 
+  background-color: #f0f0f0;
+  border: 1px solid #ccc;
+  color: black;
+  border-radius: 6px;
+  cursor: pointer;
+  margin-right: 2px;
+  transition: background-color 0.3s ease;
+}
+
+.math-symbols button:hover {
+  background-color: #ddd;
+}
+.mat-form-field input::placeholder {
+  font-size: 16px; /* Increase font size */
+  color: rgba(0, 0, 0, 0.6); /* Set a more readable color */
+  font-weight: bold; /* Optional: Make the placeholder text bold */
+}
+.answer-textarea::placeholder {
+  padding:5px;
+  color: #999; /* Placeholder text color */
+  font-style: italic; /* Placeholder text style */
+  font-size: 16px; /* Placeholder text size */
+}

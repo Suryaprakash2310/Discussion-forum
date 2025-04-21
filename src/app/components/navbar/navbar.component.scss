@@ -3,9 +3,9 @@ mat-toolbar {
   justify-content: space-between;
   align-items: center;
   margin-bottom: 10px;
-  background-color: #f44336 !important; // Red color for the entire toolbar
+  background-color: #563de1 !important; // Red color for the entire toolbar
    // Text color for toolbar items
-  height: 80px; /* Increased from default 64px */
+  height: 100px; /* Increased from default 64px */
   padding: 0 24px;
 }
 
@@ -20,7 +20,7 @@ mat-toolbar {
 
   // Hover state
   &:hover {
-    border: 2px solid #f44336;
+    border: 2px solid #563de1;
     transition: all 0.3s ease;
     border-color: white;
   }
