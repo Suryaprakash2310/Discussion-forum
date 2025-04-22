@@ -128,11 +128,14 @@ mat-card-content p {
   font-weight: 500;
   color: #777;
   font-size: 17px;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
   margin: 0 0 8px 0;
+
+  display: -webkit-box;
+  -webkit-line-clamp: 3; /* Limits to 3 lines */
+  -webkit-box-orient: vertical;
+  overflow: hidden;
 }
+
 
 /* View button */
 .custom-view-button {
@@ -152,6 +155,7 @@ mat-card-content p {
 
 /* Card header */
 .card-header {
+  padding-right: 30px;
   display: flex;
   justify-content: space-between;
   align-items: center;

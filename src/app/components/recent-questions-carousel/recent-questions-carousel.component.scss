@@ -170,13 +170,15 @@
 /* Chat Box */
 .chat-box {
   background-color: #f1f1f1;
-  flex: 1; /* Take remaining space */
+  height: 350px;               /* ✅ Fixed height */
+  max-height: 289px;           /* ✅ Prevent growing */
   margin-bottom: 12px;
   padding: 12px;
   border-radius: 10px;
-  overflow-y: auto;
-  min-height: 275px;
+  overflow-y: auto;            /* ✅ Enable vertical scroll */
+  overflow-x: hidden;          /* ✅ Optional: Hide horizontal overflow */
 }
+
 
 .chat-header {
   height: 25px;
