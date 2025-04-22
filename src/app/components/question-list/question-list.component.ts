@@ -32,7 +32,6 @@ export class QuestionListComponent implements OnInit {
   questions: Question[] = [];
   searchTerm: string = '';
   filterBy: 'mostAnswered' | 'unanswered' | 'all' = 'all';
-
   trendingTopics = [
     'Angular 15 Released!',
     'How to Optimize Angular Apps',
@@ -59,6 +58,8 @@ export class QuestionListComponent implements OnInit {
         console.error('Error fetching questions', err);
       }
     });
+    
+
   }
 
   // Fetch answers for a specific question

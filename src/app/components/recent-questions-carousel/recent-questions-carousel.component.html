@@ -14,6 +14,37 @@
 >
   Ask
 </button>
+<div class="chat-and-trending-wrapper" style="display: flex; gap: 30px">
+  <!-- Chat Section -->
+  <div class="chat-section" style="flex: 2">
+    <h3 class="chat-header">Live Chat</h3>
+    <br />
+    <div class="chat-box">
+      <div *ngFor="let msg of messages" class="chat-msg">{{ msg }}</div>
+    </div>
+    <div class="message-input">
+      <input
+        class="message-field"
+        [(ngModel)]="newMessage"
+        placeholder="Type your message..."
+        (keydown.enter)="sendMessage()"
+      />
+      <button class="send-button" (click)="sendMessage()">Send</button>
+    </div>
+  </div>
+
+  <!-- Trending Section -->
+  <div class="trending-section">
+    <h3>Top Stories</h3>
+    <div *ngFor="let news of trendingNews" class="trending-item">
+      <h4>{{ news.title }}</h4>
+      <p>{{ news.description }}</p>
+      <i class="fas fa-arrow-right arrow-icon"></i>
+    </div>
+  </div>
+</div>
+<br /><br />
+<!-- Carousel -->
 <div class="caro">
   <ng-container *ngIf="recentQuestions.length > 0">
     <owl-carousel-o [options]="carouselOptions">

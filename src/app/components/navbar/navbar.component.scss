@@ -3,8 +3,7 @@ mat-toolbar {
   justify-content: space-between;
   align-items: center;
   margin-bottom: 10px;
-  background-color: #563de1 !important; // Red color for the entire toolbar
-   // Text color for toolbar items
+  background: linear-gradient(to right, #563de1, #00c6ff); /* Gradient from purple to blue */
   height: 100px; /* Increased from default 64px */
   padding: 0 24px;
 }

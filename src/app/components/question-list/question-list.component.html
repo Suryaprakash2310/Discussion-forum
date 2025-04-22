@@ -1,8 +1,12 @@
 <div class="container" style="display: flex; gap: 20px; margin: 0; padding: 0">
-  <!-- Left section with questions -->
+  <!-- Questions Section -->
   <div class="questions-section" style="flex: 3">
-    <div class="filter-bar">
-      <mat-form-field appearance="outline" class="search-field">
+    <!-- Filter Bar -->
+    <div
+      class="filter-bar"
+      style="display: flex; gap: 16px; margin-bottom: 16px"
+    >
+      <mat-form-field appearance="outline" class="search-field" style="flex: 1">
         <mat-label>Search questions</mat-label>
         <input
           matInput
@@ -11,7 +15,7 @@
         />
       </mat-form-field>
 
-      <mat-form-field appearance="outline" class="sort-field">
+      <mat-form-field appearance="outline" class="sort-field" style="flex: 1">
         <mat-label>Sort by</mat-label>
         <mat-select [(ngModel)]="filterBy">
           <mat-option value="all">All</mat-option>
@@ -21,23 +25,18 @@
       </mat-form-field>
     </div>
 
-    <!-- Displaying the questions -->
-    <mat-card
-      *ngFor="let question of filteredQuestions"
-      class="question-card"
-      style="
-        margin-bottom: 16px;
-        width: 100%;
-        max-width: 750px;
-        margin-left: 0;
-        padding-left: 0;
-      "
-    >
-      <div class="card-header">
-        <div class="title-with-icon">
-          <mat-card-title>🗨️ {{ question.title }}</mat-card-title>
-        </div>
-
+    <!-- Questions List -->
+    <mat-card *ngFor="let question of filteredQuestions" class="question-card">
+      <!-- Card Header -->
+      <div
+        class="card-header"
+        style="
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+        "
+      >
+        <mat-card-title>🗨 {{ question.title }}</mat-card-title>
         <button
           mat-icon-button
           class="delete-button"
@@ -46,13 +45,22 @@
           <mat-icon>delete</mat-icon>
         </button>
       </div>
+
+      <!-- Card Content -->
       <mat-card-content>
-        <p>Description: {{ question.description }}</p>
+        <p><strong>Description:</strong> {{ question.description }}</p>
         <div class="tag-list" *ngIf="question.tags?.length">
-          <span class="tag-label">Tags:</span>
-          <span class="tag" *ngFor="let tag of question.tags">{{ tag }}</span>
+          <span class="tag-label"><strong>Tags:</strong></span>
+          <span
+            class="tag"
+            *ngFor="let tag of question.tags"
+            style="margin-right: 6px"
+            >{{ tag }}</span
+          >
         </div>
       </mat-card-content>
+
+      <!-- Card Actions -->
       <mat-card-actions>
         <button
           mat-button
@@ -63,14 +71,37 @@
         </button>
       </mat-card-actions>
 
-      <!-- Footer -->
-      <div class="question-footer">
+      <!-- Card Footer -->
+      <div
+        class="question-footer"
+        style="display: flex; justify-content: space-between; padding: 8px 0"
+      >
         <div class="icon-label">
-          <span class="icon-circle icon-like">❤️</span>
+          <span
+            class="icon-circle"
+            style="
+              background-color: #ffcdd2;
+              color: white;
+              padding: 2px;
+              border-radius: 50%;
+              font-size: 18px;
+            "
+            >❤️</span
+          >
           <span>{{ question.answers?.length || 0 }} Answers</span>
         </div>
         <div class="icon-label">
-          <span class="icon-circle icon-date">📅</span>
+          <span
+            class="icon-circle"
+            style="
+              background-color: #c8e6c9;
+              color: white;
+              padding: 2px;
+              border-radius: 50%;
+              font-size: 18px;
+            "
+            >📅</span
+          >
           <span>{{ question.created_at | date : "mediumDate" }}</span>
         </div>
       </div>
@@ -79,11 +110,13 @@
 </div>
 
 <!-- Ask Button -->
-<button
-  mat-raised-button
-  color="accent"
-  routerLink="/questions/new"
-  class="post-btn"
->
-  Ask
-</button>
+<div style="margin-top: 24px">
+  <button
+    mat-raised-button
+    color="accent"
+    routerLink="/questions/new"
+    class="post-btn"
+  >
+    Ask
+  </button>
+</div>
